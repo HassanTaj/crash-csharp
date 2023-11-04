@@ -1,8 +1,16 @@
-﻿using System.Collections;
+﻿//C++ 
+//#include stdio.h
+//#include <string>
+
+//Java 
+// import System.Io.*
+
+//C#
+using System.Collections;
 using System.ComponentModel;
 
 namespace CSharpFundamentals {
-    internal class Program {
+    public class Program {
         static void Main(string[] args) {
 
             #region DATA TYPES
@@ -106,14 +114,14 @@ namespace CSharpFundamentals {
                 Console.WriteLine(@"I will eat {0}", fruit);
             }
 
-            var people = new string[] {
+            var bois = new string[] {
                 "Ahmed", "Muneeb",
                 "Tayyab",
                 "Tahir",
             };
 
-            for (int i = 0; i < people.Length; i++) {
-                Console.WriteLine(@"I am {0}", people[i]);
+            for (int i = 0; i < bois.Length; i++) {
+                Console.WriteLine(@"I am {0}", bois[i]);
             }
 
             Console.WriteLine("\nwhile\n");
@@ -147,7 +155,7 @@ namespace CSharpFundamentals {
             var gender = CheckGender();
             Console.WriteLine($"Hi I am a {gender}");
             #endregion
-            
+
             #region Collections
             /// ------------------------------------
             /// Collections in C#
@@ -249,8 +257,8 @@ namespace CSharpFundamentals {
             while (myQ.Count > 0) {
                 // donkey work
                 string? str = myQ.Dequeue() as string;
-                Console.WriteLine("Dequeuing object {0}", str); 
-                
+                Console.WriteLine("Dequeuing object {0}", str);
+
                 // Console.WriteLine($"Dequeuing object {myQ.Dequeue()}"); // smart work
             }
 
@@ -307,6 +315,42 @@ namespace CSharpFundamentals {
             foreach (var val in hasSet) {
                 Console.WriteLine(val);
             }
+            #endregion
+
+            #region Custom Classes & Objects
+
+            Person haseeb = new();
+            haseeb.setId(1);
+            haseeb.Name = "Haseeb";
+            haseeb.Age = 23;
+            haseeb.Weight = 50;
+            haseeb.Height = 5.7f;
+            haseeb.SkinTone = SkinTone.Brown;
+
+            var jaden = new Person {
+                Name="Jaden",
+                Age=18,
+                Weight=80,
+                Height=5.4f,
+                SkinTone=SkinTone.Yellow,
+            };
+            jaden.setId(2);
+
+            var people = new List<Person> {
+                haseeb,
+                jaden
+            };
+
+            people.ForEach(p => {
+                Console.WriteLine("\n" + $@"Id:{p.getId()}
+name:{p.Name}
+age:{p.Age}
+weight:{p.Weight}
+height:{p.Height}
+skinTone:{p.SkinTone}
+");
+            });
+
             #endregion
 
             Console.ReadKey();
