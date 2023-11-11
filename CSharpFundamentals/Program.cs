@@ -13,7 +13,7 @@ namespace CSharpFundamentals {
     public class Program {
         static void Main(string[] args) {
 
-            #region DATA TYPES
+            #region Data Types
             /// ------------------------------------
             /// THE PRIMITIVE DATA TYPES
             /// ------------------------------------
@@ -31,8 +31,8 @@ namespace CSharpFundamentals {
             /// ulong           8 0 to 18 quintillion 
             /// 
             /// float           4 bytes 7 significant digits^1 
-            /// double          8 bytes — also used for floating point numbers - 15 significant digits^2
-            /// decimal         24 bytes - 28 to 29 significant digits^4
+            /// double          8 bytes —  15 significant digits^2, base 2
+            /// decimal         24 bytes - 28 to 29 significant digits^4, base 10
             /// 
             /// object          4 byte address — All C# Objects
             /// char            2 byte Unicode characters single character of data
@@ -40,7 +40,7 @@ namespace CSharpFundamentals {
             /// bool            1 byte - Boolean true or false value
             /// DateTime        8 bytes — represents 0:00:00 Jan 1 0001 through 11 :59:59 Dec 31 9999
             /// DateSpan        -10675199.02:48:05.4775808 to 10675199.02:48:05.47758076
-            ///
+
             /// ------------------------------------
             /// NULLABLE DATA TYPES
             /// ------------------------------------
@@ -52,10 +52,74 @@ namespace CSharpFundamentals {
             /// bool? b; // can be true or false, or null
             /// int? i; // can be an integer value, or null
             /// Nullable<long>; // this can be null or a long number
-            /// ----------------------------------------------
+            /// -------------------------------------
+
+            /// ------------------------------------
+            /// Double or Decimal
+            /// ------------------------------------
+            ///                     double                      decimal
+            ///
+            /// Precision           15-16 Figures               28-29 figures
+            /// 
+            /// Internal Format     Base 2                      Base 10
+            /// 
+            /// Speed               native to CPU(very fast)    up to 10x slower than double
+            /// 
+            /// Good For            Scientific calculations     Financial calculations
+            /// 
+            /// ------------------------------------
+
+            /// ------------------------------------
+            /// Value Types & Reference Types
+            /// ------------------------------------
+            /// 
+            /// 1. Value Types         all permeative types (int,long,float,decimal,short)
+            ///     in Value Types are always passed as copy to a function
+            ///     
+            /// 2. Reference Types     class, array,delegate, interface, record
+            ///     in reference types only the address/reference of the variable is passed to the function
+            /// 
+            /// ------------------------------------
+            #endregion
+
+            #region Operators and Precedence
+            /// ------------------------------------
+            /// THE PRIMITIVE DATA TYPES
+            /// ------------------------------------
+            /// 
+            /// 1. Multiplicative                   * / %
+            /// 2. Additive                         + -
+            /// 3. Comparison and Type Testing      < > <=  >= is as
+            /// 4. Equality                         == !=
+            /// 5. Conditional AND                  &&
+            /// 6. Conditional OR                   ||
+            /// 7. Ternary                          ?:
+            /// 8. Assignment                       = *= /= %= += -=
+            /// 
+            /// Details and more about Operators: 
+            /// https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/
+            /// ------------------------------------
+            #endregion
+
+            #region Everything is An Object
+            /// ------------------------------------
+            /// (ALMOST)EVERYTHING IS AN OBJECT
+            /// ------------------------------------
+            /// 
+            /// 1. Provides a unified way of working with all variable types — you don't treat
+            ///     primitive types one way and objects another like in other languages
+            ///
+            /// 2. Basic variable types in C# have some cool automatic features built in
+            /// 
+            /// 3. C# types can be converted to and from objects, so they can be passed to
+            ///     functions that take objects as parameters
+            /// 
+            /// ------------------------------------
             #endregion
 
             #region Conditionals
+            PrintTitle("Conditionals");
+
             // conditionals
             int age = 17;
 
@@ -93,15 +157,14 @@ namespace CSharpFundamentals {
             #endregion
 
             #region Loops
-            Console.WriteLine("\nLoops \n");
-
-            Console.WriteLine("for");
+            PrintTitle("Loops");
+            PrintTitle("for");
             for (int i = 0; i < 10; i++) {
                 var j = (1 + i);
                 Console.WriteLine("This is item number" + i + " " + j);
             }
 
-            Console.WriteLine("\nforeach\n");
+            PrintTitle("foreach");
             var fruits = new string[6];
             fruits[0] = "Apple";
             fruits[1] = "Mango";
@@ -130,6 +193,7 @@ namespace CSharpFundamentals {
              "Islamabad"
             };
 
+            PrintTitle("while");
             cities.Add("Multab");
             cities.Add("Karachi");
             int citiyIndex = 0;
@@ -145,6 +209,7 @@ namespace CSharpFundamentals {
             #endregion
 
             #region Enums
+            PrintTitle("Enums");
             Console.WriteLine($"\nEnum\n");
             Console.WriteLine($"Gender {Genders.Male.GetHashCode()}");
             Console.WriteLine($"Gender {Genders.Female}");
@@ -152,11 +217,14 @@ namespace CSharpFundamentals {
             #endregion
 
             #region Functions
+            PrintTitle("Functions");
             var gender = CheckGender();
             Console.WriteLine($"Hi I am a {gender}");
             #endregion
 
             #region Collections
+            PrintTitle("Collections");
+
             /// ------------------------------------
             /// Collections in C#
             /// ------------------------------------
@@ -174,7 +242,8 @@ namespace CSharpFundamentals {
             /// ------------------------------------
             /// Arrays
             /// ------------------------------------ 
-            Console.WriteLine("\n------------- Arrays --------------\n");
+            PrintTitle("Arrays");
+            /// 
             int[] manyValues = { 1, 18, 745, 34, 16, 94, 73, 4, 17, 200 };
 
             Console.WriteLine("The fourth number is {0}", manyValues[3]);
@@ -205,7 +274,8 @@ namespace CSharpFundamentals {
             /// ------------------------------------
             /// ArrayLists
             /// ------------------------------------
-            Console.WriteLine("\n------------- Array List --------------\n");
+            /// 
+            PrintTitle("Array List");
             ArrayList myAL = new ArrayList();
             myAL.Add("one");
             myAL.Add(2);
@@ -225,7 +295,8 @@ namespace CSharpFundamentals {
             /// ------------------------------------
             /// Stack
             /// ------------------------------------
-            Console.WriteLine("\n------------- Stack --------------\n");
+           
+            PrintTitle("Stack");
             Stack myStack = new Stack();
             myStack.Push("item 1");
             myStack.Push("item 2");
@@ -245,7 +316,7 @@ namespace CSharpFundamentals {
             /// ------------------------------------
             /// Queues
             /// ------------------------------------
-            Console.WriteLine("\n------------- Queues --------------\n");
+            PrintTitle("Queues");
             Queue myQ = new Queue();
             myQ.Enqueue("item 1");
             myQ.Enqueue("item 2");
@@ -265,9 +336,9 @@ namespace CSharpFundamentals {
             /// ------------------------------------
             /// Dictionaries
             /// ------------------------------------
-            Console.WriteLine("\n------------- Dictionaries --------------\n");
-
-            Console.WriteLine("\n------------- Hashtable --------------\n");
+           
+            PrintTitle("Dictionaries");
+            PrintTitle("Hashtable");
 
             Hashtable myHT = new();
             myHT.Add("SFO", "San Francisco Airport");
@@ -282,8 +353,7 @@ namespace CSharpFundamentals {
                 Console.WriteLine("Value for key {0} is {1}", "SFO", myHT["SFO"]);
             }
 
-            Console.WriteLine("\n------------- KeyValuePair --------------\n");
-
+            PrintTitle("KeyValuePair");
             List<KeyValuePair<long, string>> genders = new();
             genders.Add(new KeyValuePair<long, string>((long)Genders.Male, Genders.Male.ToString()));
             genders.Add(new KeyValuePair<long, string>((long)Genders.Female, Genders.Female.ToString()));
@@ -293,8 +363,7 @@ namespace CSharpFundamentals {
                 Console.WriteLine($"Key = {genderKeyValuePair.Key} & Value = {genderKeyValuePair.Value}");
             });
 
-            Console.WriteLine("\n------------- Dictionary --------------\n");
-
+            PrintTitle("Dictionary");
             Dictionary<char, string> englishDictionary = new();
             englishDictionary.Add('a', "apple");
             englishDictionary.Add('s', "saib");
@@ -305,8 +374,7 @@ namespace CSharpFundamentals {
                 Console.WriteLine($"for key {key} = {englishDictionary.GetValueOrDefault(key)}");
             }
 
-            Console.WriteLine("\n------------- HashSet --------------\n");
-
+            PrintTitle("HashSet");
             HashSet<int> hasSet = new HashSet<int>();
             hasSet.Add(1);
             hasSet.Add(2);
@@ -318,7 +386,7 @@ namespace CSharpFundamentals {
             #endregion
 
             #region Custom Classes & Objects
-
+            PrintTitle("Custom Classes & Objects");
             Person haseeb = new();
             haseeb.setId(1);
             haseeb.Name = "Haseeb";
@@ -328,11 +396,11 @@ namespace CSharpFundamentals {
             haseeb.SkinTone = SkinTone.Brown;
 
             var jaden = new Person {
-                Name="Jaden",
-                Age=18,
-                Weight=80,
-                Height=5.4f,
-                SkinTone=SkinTone.Yellow,
+                Name = "Jaden",
+                Age = 18,
+                Weight = 80,
+                Height = 5.4f,
+                SkinTone = SkinTone.Yellow,
             };
             jaden.setId(2);
 
@@ -350,10 +418,82 @@ height:{p.Height}
 skinTone:{p.SkinTone}
 ");
             });
+            #endregion
+
+            #region Access Modifiers
+            /// ------------------------------------
+            /// Access Modifiers
+            /// ------------------------------------
+            /// 
+            /// ----- Default Access
+            /// Type                   Default Access
+            /// 
+            /// class                   internal
+            /// struct                  internal
+            /// interface               internal
+            /// record                  internal
+            /// enum                    internal
+            /// interface members       internal
+            /// ---------------------------
+            /// 
+            /// 
+            /// ---- Summary
+            /// 
+            /// Caller's Location                       public |(protected internal) | protected |internal |(private protected) |  private
+            /// within the class                         ✔️     |  ✔️                 |   ✔️       | ✔️       | ✔️                 |   ✔️
+            /// derived class (same assembly)            ✔️     |  ✔️                 |   ✔️       | ✔️       | ✔️                 |   ❌
+            /// non-derived class (same assembly)        ✔️     |  ✔️                 |   ❌      | ✔️       | ❌                |   ❌
+            /// derived class (different assembly)       ✔️     |  ✔️                 |   ✔️       | ❌      | ❌                |   ❌
+            /// non-derived class (different assembly)   ✔️     |  ❌                |   ❌      | ❌      | ❌                |   ❌
+            /// 
+            /// Details: 
+            /// https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/access-modifiers
+            /// ------------------------------------
 
             #endregion
 
+            #region Postfix & Prefix
+            PrintTitle("Postfix & Prefix");
+            int a = 10;
+            Console.WriteLine("\nprefix a = {0}", ++a);
+            int b = 10;
+            Console.WriteLine("postfix b = {0}", b++);
+            #endregion
+
+            #region Value Type & Reference Type
+            PrintTitle("Value Type & Reference Type");
+            // in value types value is passed as a copy to a function
+            PrintTitle("Value Type"); 
+            var ten = 10;
+            Console.WriteLine($"\nvalue of ten = {ten}");
+            AddTen(ten);
+            Console.WriteLine($"value of ten = {ten}");
+
+            // in reference types address/reference of the variable is passed to a function
+            PrintTitle("Reference Type"); 
+            Person kashif = new() {
+                Name = "Kashif"
+            };
+            Console.WriteLine($"\nBefore {nameof(ChangePersonName)} = {kashif.Name}");
+            ChangePersonName(kashif);
+            Console.WriteLine($"After {nameof(ChangePersonName)} = {kashif.Name}");
+            #endregion
+
             Console.ReadKey();
+        }
+
+        // expression bodied function
+        static void PrintTitle(string title) => Console.WriteLine($"\n------------- {title} --------------\n");
+      
+        // normal static function
+        static void AddTen(int a) {
+            a += 10;
+            Console.WriteLine($"value of a in {nameof(AddTen)} = {a}");
+        }
+        static void ChangePersonName(Person p) {
+            p.Name = "Captain " + p.Name;
+            p.Age = 30;  // for those kids who will ask can we change anything else ?? YES
+            Console.WriteLine($"Inside {nameof(ChangePersonName)} scope = {p.Name}");
         }
 
         static string CheckGender() {
