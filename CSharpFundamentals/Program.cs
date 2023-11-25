@@ -479,6 +479,25 @@ skinTone:{p.SkinTone}
             Console.WriteLine($"After {nameof(ChangePersonName)} = {kashif.Name}");
             #endregion
 
+            #region Complex Classes
+            PrintTitle("Complex Classes");
+
+            var car = new Car();
+            car.ApplyBreak();
+            var bike = new Bike();
+            bike.ApplyBreak();
+
+            var eaters = new List<IEat>() {
+                new Human(),
+                new Fish(),
+                new Mermaid(),
+            };
+            eaters.ForEach(eater => {
+                eater.Eat();
+            });
+
+            #endregion
+
             Console.ReadKey();
         }
 

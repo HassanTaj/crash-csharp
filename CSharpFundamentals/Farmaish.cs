@@ -7,7 +7,10 @@
         public double Price { get; set; }
     }
 
-    internal class Vehicle {
+    internal interface IBreak {
+         void ApplyBreak(); // signature, prototype
+    }
+    internal class Vehicle : IBreak {
         public int Model { get; set; }
         public int Make { get; set; }
         public string Color { get; set; }
@@ -15,6 +18,10 @@
         public string ChasiNumber { get; set; }
         public string EngineType { get; set; }
         public int TankSize { get; set; }
+
+        public void ApplyBreak() {
+            Console.WriteLine("Breaks Applied...");
+        }
     }
 
     // Hafsa
@@ -22,9 +29,9 @@
         public bool IsRearWheelDrive { get; set; }
         public bool IsAllWheelDrive { get; set; }
     }
+
     // Haseeb
     internal class Bike : Vehicle {
-
         public bool IsSportsBike { get; set; }
         public bool IsElectricStart { get; set; }
     }
@@ -93,6 +100,6 @@
         public string MaterialComposition { get; set; }
     }
 
-
+    
 
 }

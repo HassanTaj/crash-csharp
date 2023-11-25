@@ -26,6 +26,9 @@ namespace CSharpFundamentals {
         
         public float Height { get; set; }
         public int Weight { get; set; }
+        public void Eat() {
+            Console.WriteLine("Person is eating");
+        }
     }
 
     public enum SkinTone {
