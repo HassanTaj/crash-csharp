@@ -295,7 +295,7 @@ namespace CSharpFundamentals {
             /// ------------------------------------
             /// Stack
             /// ------------------------------------
-           
+
             PrintTitle("Stack");
             Stack myStack = new Stack();
             myStack.Push("item 1");
@@ -336,7 +336,7 @@ namespace CSharpFundamentals {
             /// ------------------------------------
             /// Dictionaries
             /// ------------------------------------
-           
+
             PrintTitle("Dictionaries");
             PrintTitle("Hashtable");
 
@@ -463,14 +463,14 @@ skinTone:{p.SkinTone}
             #region Value Type & Reference Type
             PrintTitle("Value Type & Reference Type");
             // in value types value is passed as a copy to a function
-            PrintTitle("Value Type"); 
+            PrintTitle("Value Type");
             var ten = 10;
             Console.WriteLine($"\nvalue of ten = {ten}");
             AddTen(ten);
             Console.WriteLine($"value of ten = {ten}");
 
             // in reference types address/reference of the variable is passed to a function
-            PrintTitle("Reference Type"); 
+            PrintTitle("Reference Type");
             Person kashif = new() {
                 Name = "Kashif"
             };
@@ -496,6 +496,59 @@ skinTone:{p.SkinTone}
                 eater.Eat();
             });
 
+            PrintTitle("Abstract");
+
+            AbstractVehicle boat = new Boat();
+            Console.WriteLine($"{boat.GetEngineNumber()}");
+
+            AbstractVehicle fighterJet = new F16Falcon();
+            Console.WriteLine($"{fighterJet.GetEngineNumber()}");
+
+            PrintTitle("Inheritance");
+
+            GrandParent gp = new GrandParent();
+            Parent p = new Parent();
+            Child child = new Child();
+
+            Console.WriteLine($"{nameof(GrandParent)}-{nameof(GrandParent.Smokes)} = {gp.Smokes()}");
+            Console.WriteLine($"{nameof(Parent)}-{nameof(Parent.Smokes)} = {p.Smokes()}");
+            Console.WriteLine($"{nameof(Child)}-{nameof(Child.Smokes)} = {child.Smokes()}");
+            Console.WriteLine($"{nameof(Child)}-{nameof(Child.DoesIce)} = {child.DoesIce()}");
+
+            PrintTitle("Type Casting");
+
+            GrandParent gp2 = new Child();
+            Console.WriteLine($"{nameof(gp2)}-{nameof(gp2.Smokes)} = {gp2.Smokes()}");
+
+            Child? c1 = gp2 as Child;
+            Console.WriteLine($"{nameof(c1)}-{nameof(c1.Smokes)} = {c1.Smokes()}");
+            Console.WriteLine($"{nameof(c1)}-{nameof(c1.DoesIce)} = {c1.DoesIce()}");
+
+            int pi = ((int)3.14f);
+            Console.WriteLine($"value of PI {pi}");
+
+
+            #endregion
+
+            #region Exceptions
+
+            PrintTitle("Exceptions");
+
+            try {
+                var variable = 1;
+                int number = 100 / variable;
+            }
+            catch (DivideByZeroException ex) {
+                Console.WriteLine("Divide By Zero 1");
+                throw ex;
+            }
+            catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+            }
+            finally {
+                Console.WriteLine("execution DONE");
+            }
+
             #endregion
 
             Console.ReadKey();
@@ -503,7 +556,7 @@ skinTone:{p.SkinTone}
 
         // expression bodied function
         static void PrintTitle(string title) => Console.WriteLine($"\n------------- {title} --------------\n");
-      
+
         // normal static function
         static void AddTen(int a) {
             a += 10;
@@ -518,7 +571,7 @@ skinTone:{p.SkinTone}
         static string CheckGender() {
             string result; // = default; // string.Empty; // "";
             Console.Write("Enter\n1 for Male\n2 for Female\n3 for other : ");
-            var gender = Convert.ToInt32(Console.ReadLine());
+            var gender = 1;// Convert.ToInt32(Console.ReadLine());
             if (gender == Genders.Male.GetHashCode()) {
                 result = "Man";
             }
